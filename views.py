@@ -122,8 +122,8 @@ def logout():
 
 
 if __name__ == '__main__':
-    # db.drop_all()
-    # db.create_all()
+    db.drop_all()
+    db.create_all()
 
     p1 = Post(title='雨霖鈴',
               content='寒蟬淒切，對長亭晚，驟雨初歇。都門帳飲無緒，留戀處，蘭舟催發。'
