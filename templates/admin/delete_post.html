@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <p class="flash alert alert-success">
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+    </p>
+  {% endif %}
+{% endwith %}
+
+
+{% endblock %}

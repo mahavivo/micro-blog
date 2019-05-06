@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <p class="flash alert alert-success">
+    {% for message in messages %}
+		<strong>{{ message }}</strong>
+    {% endfor %}
+    </p>
+  {% endif %}
+{% endwith %}
+
+{% block content %}
+<div class="card border-0">
+
+  <img class="card-img-top" src="http://www.bing.com/th?id=OHR.SakuraFes_EN-CA2063659121_1920x1080.jpg&rf=NorthMale_1920x1080.jpg&pid=hp" alt="Card image cap">
+
+  <div class="card-block" style="font-family:PingFangSC,Arial,'Hiragino Sans GB';">
+    <h4 class="card-title text-center" style="margin:30px;">{{post.title}}</h4>
+    <p class="card-text">{{post.content}}</p>
+    <p class="card-text text-muted text-right">{{post.pub_date.strftime('%Y-%m-%d %H:%M:%S')}}</p>
+  </div>
+
+</div>
+{% endblock %}

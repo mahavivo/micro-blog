@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <p class="flash alert alert-success">
+    {% for message in messages %}
+		<strong>{{ message }}</strong>
+    {% endfor %}
+    </p>
+  {% endif %}
+{% endwith %}
+
+
+<div class="text-left"><br>
+	<a href="/admin/dashboard" class="btn btn-primary">Back</a>
+</div>
+
+
+<section class="container" style="margin-top:40px; padding:0">
+	<form method="POST">
+		 {{ form.csrf_token }}
+
+		<div>
+			<p>{{ form.title.label }}: </p>
+			<p>{{ form.title() }}</p>
+		</div>
+		<div>
+			<p>{{ form.content.label }}: </p>
+			<p>{{ form.content() }}</p>
+		</div>
+		<div>{{ form.submit() }}</div>
+
+	</form>
+</section>
+
+{% endblock %}

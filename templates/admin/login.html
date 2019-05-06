@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <p class="flash alert alert-success">
+    {% for message in messages %}
+		<strong>{{ message }}</strong>
+    {% endfor %}
+    </p>
+  {% endif %}
+{% endwith %}
+
+
+<h3>Login</h3>
+
+<form method="POST" action="/admin/login">
+     {{ form.csrf_token }}
+
+    <div>
+        <p>{{ form.username.label }}: </p>
+        <p>{{ form.username() }}</p>
+
+        <p>{{ form.password.label }}: </p>
+        <p>{{ form.password() }}</p>
+    </div>
+    <div>{{ form.submit() }}</div>
+
+</form>
+
+
+{% endblock %}

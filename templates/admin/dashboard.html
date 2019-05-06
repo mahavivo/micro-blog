@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+<div class="jumbotron" style="background: #f6f6f6;">
+  <div class="container">
+    <h3 class="text-center">Welcome to vivo Blog!</h3><br>
+    <p class="lead text-center">Read about the latest happening in the tech world...</p>
+  </div>
+</div>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <p class="flash alert alert-success">
+    {% for message in messages %}
+      <strong>{{ message }}</strong>
+    {% endfor %}
+    </p>
+  {% endif %}
+{% endwith %}
+
+<div class="lead">
+	<a href="/admin/add-post" class="btn btn-primary">Add Post</a>
+</div>
+<br>
+
+
+{% for post in posts %}
+    <div class="card" style="font-family:PingFangSC,Arial,'Hiragino Sans GB';">
+      <div class="card-header"  style="padding:12px">
+        <h5 style="margin-bottom:0"> {{post.title}}</h5>
+      </div>
+      <div class="card-block" style="padding: 12px;">
+        <p class="card-text">{{post.content}}</p>
+        <p class="card-text text-muted text-right">{{post.pub_date.strftime('%Y-%m-%d %H:%M:%S')}}</p>
+        <a href="/post/{{post.id}}" target="_blank" class="btn btn-primary">View</a>
+        <a href="/admin/post/update/{{post.id}}" class="btn btn-info">Edit</a>
+        <a href="/admin/post/delete/{{post.id}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?')">Delete</a>
+      </div>
+    </div> <br>
+{% endfor %}
+
+{% endblock %}
